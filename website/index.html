@@ -775,3 +775,12 @@
     try {
       const res = await fetch('https://YOUR_API_GATEWAY_URL/count', { method: 'POST' });
       const data = await res.json();
+      document.getElementById('visitor-count').textContent = data.count + ' visitors';
+    } catch {
+      document.getElementById('visitor-count').textContent = '';
+    }
+  }
+  updateVisitorCount();
+</script>
+</body>
+</html>
