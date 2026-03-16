@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Outfit:wght@300;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #060606;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .card {
+    width: 1200px;
+    height: 628px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1918 0%, #161514 50%, #131211 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 108px;
+    transform-origin: top center;
+  }
+
+  /* Subtle arc — the one graphic element */
+  svg.arc {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 108px;
+    line-height: 0.93;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+  }
+
+  .first { color: #ede8e0; display: block; }
+  .last  { color: #c34b00; display: block; }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(195, 75, 0, 0.45);
+    margin-bottom: 18px;
+  }
+
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 0.22em;
+    color: #636262;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 19px;
+    letter-spacing: 0.06em;
+    color: #c34b00;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <svg class="arc" viewBox="0 0 1200 628" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Texture filter -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="10" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <rect width="1200" height="628" filter="url(#noise)" opacity="0.035" fill="white"/>
+    <!-- Circles, pulled in closer -->
+    <circle cx="860" cy="314" r="280" stroke="rgba(195,75,0,.5)" stroke-width="1"/>
+    <circle cx="860" cy="314" r="200" stroke="rgba(195,75,0,.3)" stroke-width="1"/>
+    <!-- Single horizontal hairline -->
+    <line x1="0" y1="520" x2="1200" y2="520" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    <!-- Small corner mark -->
+    <line x1="1152" y1="48" x2="1152" y2="80" stroke="rgba(195,75,0,0.18)" stroke-width="1"/>
+    <line x1="1120" y1="48" x2="1152" y2="48" stroke="rgba(195,75,0,0.18)" stroke-width="1"/>
+  </svg>
+
+  <div class="content">
+    <div class="name">
+      <span class="first">Nicholas</span>
+      <span class="last">Madson</span>
+    </div>
+    <div class="divider"></div>
+    <div class="meta">IT · Cloud Computing</div>
+    <div class="url">nicholasmadson.dev</div>
+  </div>
+
+</div>
+<script>
+  function scale() {
+    const card = document.querySelector('.card');
+    const s = Math.min(window.innerWidth / 1200, window.innerHeight / 628, 1);
+    card.style.transform = `scale(${s})`;
+    card.style.marginTop = `${(628 * s - 628) / 2}px`;
+  }
+  scale();
+  window.addEventListener('resize', scale);
+</script>
+</body>
+</html>

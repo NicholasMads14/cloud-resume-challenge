@@ -1,0 +1,14 @@
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Secrets - never commit these
+*.env
+.env
+secrets.*
