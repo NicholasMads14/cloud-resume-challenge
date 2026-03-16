@@ -253,7 +253,7 @@
       text-align: center;
       margin-top: 4px;
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 11px;
       color: var(--muted);
       white-space: nowrap;
       letter-spacing: 0.06em;
@@ -492,7 +492,7 @@
     footer {
       text-align: center;
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--muted);
       padding-top: 36px;
       border-top: 1px solid var(--border);
@@ -571,39 +571,38 @@
     <div class="tag-cloud" style="margin-bottom:4px;">
       <span class="tag">AWS</span>
       <span class="tag">Linux</span>
-      <span class="tag">Docker</span>
-      <span class="tag">Terraform</span>
+      <span class="tag">Python</span>
+      <span class="tag">PowerShell</span>
+      <span class="tag">Git</span>
       <span class="tag">Networking</span>
-      <span class="tag">Active Directory</span>
-      <span class="tag">Bash</span>
-      <span class="tag">Tailscale</span>
-      <span class="tag">Hyper-V</span>
-      <span class="tag">Meraki</span>
-      <span class="tag">DNS / DHCP</span>
       <span class="tag">TCP/IP</span>
+      <span class="tag">DNS/DHCP</span>
+      <span class="tag">Meraki</span>
+      <span class="tag">Active Directory</span>
+      <span class="tag">Microsoft 365</span>
+      <span class="tag">Virtualization</span>
+      <span class="tag">RMM Tools</span>
     </div>
 
     <div class="sidebar-divider"></div>
 
     <div class="sidebar-label">Certifications</div>
     <div class="cert-badges" style="margin-bottom: 18px;">
-      <!-- Earned -->
-      <span class="cert-badge" title="CompTIA A+">
+      <span class="cert-badge" title="CompTIA A+" onclick="openLightbox('aplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-aplus.webp" alt="CompTIA A+" />
       </span>
-      <span class="cert-badge" title="CompTIA Network+">
+      <span class="cert-badge" title="CompTIA Network+" onclick="openLightbox('netplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-netplus.webp" alt="CompTIA Network+" />
       </span>
-      <span class="cert-badge" title="CompTIA Security+">
+      <span class="cert-badge" title="CompTIA Security+" onclick="openLightbox('secplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-secplus.webp" alt="CompTIA Security+" />
       </span>
-      <span class="cert-badge" title="ITIL 4 Foundation">
+      <span class="cert-badge" title="ITIL 4 Foundation" onclick="openLightbox('itil.png')" style="cursor:zoom-in;">
         <img src="cert-itil.png" alt="ITIL 4 Foundation" style="padding: 8px;" />
       </span>
-      <span class="cert-badge" title="LPI Linux Essentials">
+      <span class="cert-badge" title="LPI Linux Essentials" onclick="openLightbox('linux.jpg')" style="cursor:zoom-in;">
         <img src="cert-linux.webp" alt="LPI Linux Essentials" style="padding: 8px;" />
       </span>
-      <!-- In Progress -->
       <span class="cert-badge in-progress" title="AWS Cloud Practitioner — In Progress">
         <img src="cert-awsccp.webp" alt="AWS Cloud Practitioner" />
         <span class="cert-progress-label">in progress</span>
@@ -729,7 +728,7 @@
     </div>
 
     <footer>
-      <p>Built with AWS S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · Terraform</p>
+      <p>Hosted on AWS S3 · Distributed via CloudFront · Secured with ACM · Deployed via GitHub Actions CI/CD</p>
       <p style="margin-top:6px;">
         <a href="https://github.com/NicholasMads14" target="_blank">GitHub</a>
         &nbsp;·&nbsp;
@@ -776,12 +775,3 @@
     try {
       const res = await fetch('https://YOUR_API_GATEWAY_URL/count', { method: 'POST' });
       const data = await res.json();
-      document.getElementById('visitor-count').textContent = data.count + ' visitors';
-    } catch {
-      document.getElementById('visitor-count').textContent = 'visitor counter coming soon';
-    }
-  }
-  updateVisitorCount();
-</script>
-</body>
-</html>
