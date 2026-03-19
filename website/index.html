@@ -571,8 +571,8 @@
     <div class="tag-cloud" style="margin-bottom:4px;">
       <span class="tag">AWS</span>
       <span class="tag">Linux</span>
-      <span class="tag">Python</span>
-      <span class="tag">PowerShell</span>
+      <!-- <span class="tag">Python</span>
+      <span class="tag">PowerShell</span> -->
       <span class="tag">Git</span>
       <span class="tag">Networking</span>
       <span class="tag">TCP/IP</span>
@@ -615,10 +615,10 @@
 
     <div class="sidebar-divider"></div>
 
-    <!-- <div class="visitor-counter">
+    <div class="visitor-counter">
       <div class="visitor-dot"></div>
       <span id="visitor-count">-- visitors</span>
-    </div> -->
+    </div>
 
   </aside>
 
@@ -773,7 +773,7 @@
   // Visitor counter
   async function updateVisitorCount() {
     try {
-      const res = await fetch('https://YOUR_API_GATEWAY_URL/count', { method: 'POST' });
+      const res = await fetch('https://rw9vq8sot0.execute-api.us-east-1.amazonaws.com/count', { method: 'POST' });
       const data = await res.json();
       document.getElementById('visitor-count').textContent = data.count + ' visitors';
     } catch {
