@@ -356,13 +356,12 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 12px;
-      flex-wrap: wrap;
       margin-bottom: 2px;
     }
 
     .card-title { font-size: 16px; font-weight: 700; color: var(--heading); }
     .card-company { font-size: 13.5px; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
-    .card-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .card-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
     .card-location { font-family: var(--mono); font-size: 11.5px; color: var(--muted); margin-bottom: 8px; }
 
     .card ul { list-style: none; margin-top: 8px; }
@@ -391,10 +390,22 @@
       border-radius: 10px;
       margin-bottom: 14px;
       overflow: hidden;
-      transition: border-color 0.25s;
+      position: relative;
+      transition: border-color 0.25s, background 0.25s;
     }
 
-    .project-card:hover { border-color: rgba(232,132,58,0.3); }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,132,58,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+
+    .project-card:hover { border-color: rgba(232,132,58,0.3); background: var(--surface2); }
+    .project-card:hover::after { opacity: 1; }
 
     .project-images {
       display: flex;
@@ -472,6 +483,29 @@
       line-height: 1.45;
     }
 
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(232,132,58,0.25);
+      border-radius: 5px;
+      padding: 4px 10px;
+      margin-right: 8px;
+      margin-top: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .project-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .project-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
     /* Education */
     .edu-card {
       background: var(--surface);
@@ -479,10 +513,23 @@
       border-radius: 10px;
       padding: 18px 22px;
       margin-bottom: 10px;
-      transition: border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, background 0.25s;
     }
 
-    .edu-card:hover { border-color: rgba(232,132,58,0.3); }
+    .edu-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,132,58,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+
+    .edu-card:hover { border-color: rgba(232,132,58,0.3); background: var(--surface2); }
+    .edu-card:hover::after { opacity: 1; }
 
     .edu-school { font-size: 16px; font-weight: 700; color: var(--heading); }
     .edu-degree { font-size: 13.5px; color: var(--accent); margin-top: 3px; }
@@ -542,9 +589,9 @@
     <div class="sidebar-role">IT Technician · Cloud Computing Student</div>
 
     <div class="contact-links">
-      <a href="mailto:nicholasmads14@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#8ce2e5efe4e3e0edffe1ede8ffbdb8ccebe1ede5e0a2efe3e1" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        nicholasmads14@gmail.com
+        <span class="__cf_email__" data-cfemail="bed0d7ddd6d1d2dfcdd3dfdacd8f8afed9d3dfd7d290ddd1d3">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/nicholasmads14/" target="_blank" class="contact-link">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -577,7 +624,7 @@
       <span class="tag">Networking</span>
       <span class="tag">TCP/IP</span>
       <span class="tag">DNS/DHCP</span>
-      <span class="tag">Meraki</span>
+      <span class="tag">SDN</span>
       <span class="tag">Active Directory</span>
       <span class="tag">Microsoft 365</span>
       <span class="tag">Virtualization</span>
@@ -636,11 +683,11 @@
         <div class="card-top">
           <div>
             <div class="card-title">IT Technician</div>
-            <div class="card-company">Lattis Networks — Managed Service Provider</div>
+            <div class="card-company">Lattis Networks</div>
           </div>
           <div class="card-meta">Dec 2025 – Present</div>
         </div>
-        <div class="card-location">San Luis Obispo, CA · Hybrid</div>
+        <div class="card-location">Atascadero, CA · Hybrid</div>
         <ul>
           <li>Troubleshoot and resolve network outages, misconfigured infrastructure, and endpoint issues across diverse small business client environments</li>
           <li>Administer Active Directory, Hyper-V, Meraki dashboards, and firewall configurations</li>
@@ -677,6 +724,29 @@
 
       <div class="project-card">
         <div class="project-body">
+          <div class="project-title">Movie Ranking App</div>
+          <div class="project-stack">Lambda · DynamoDB · Cognito · API Gateway · S3 · CloudFront · Route 53 · ACM · React · Vite</div>
+          <ul>
+            <li>Full-stack serverless app for our 6-person movie club to rank and compare the 120+ films we've watched across 7 tiers with drag-and-drop reordering</li>
+            <li>Cognito authentication with per-user rankings stored in DynamoDB; JWT-authorized API Gateway routes</li>
+            <li>Two isolated deployments from one codebase — production (private) and a public demo environment</li>
+            <li>Responsive React frontend with real-time saves, search, admin controls, and a compare-everyone view</li>
+          </ul>
+          <div>
+            <a href="https://mra-demo.nicholasmadson.dev" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live demo
+            </a>
+            <a href="https://github.com/NicholasMads14/movie-ranking-app" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
           <div class="project-title">Cloud Resume Challenge</div>
           <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · Terraform · GitHub Actions</div>
           <ul>
@@ -685,6 +755,12 @@
             <li>Implemented serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
             <li>Infrastructure as Code with Terraform; automated deployments via GitHub Actions CI/CD</li>
           </ul>
+          <div>
+            <a href="https://github.com/NicholasMads14/cloud-resume-challenge" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
 
@@ -744,7 +820,7 @@
   <img id="lightbox-img" src="" alt="Full size image" />
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Theme toggle
   function toggleTheme() {
     document.documentElement.classList.toggle('light');
