@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <!-- Monitor frame -->
+  <rect x="2" y="3" width="28" height="19" fill="#2a2d35"/>
+  <!-- Screen -->
+  <rect x="4" y="5" width="24" height="15" fill="#111214"/>
+  <!-- > prompt — pixel blocks -->
+  <rect x="8"  y="10" width="2" height="2" fill="#e8843a"/>
+  <rect x="10" y="12" width="2" height="2" fill="#e8843a"/>
+  <rect x="8"  y="14" width="2" height="2" fill="#e8843a"/>
+  <!-- cursor block -->
+  <rect x="13" y="14" width="4" height="2" fill="#e8843a" opacity="0.55"/>
+  <!-- Stand -->
+  <rect x="14" y="22" width="4" height="4" fill="#2a2d35"/>
+  <!-- Base -->
+  <rect x="10" y="26" width="12" height="2" fill="#2a2d35"/>
+</svg>
