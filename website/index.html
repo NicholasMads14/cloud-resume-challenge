@@ -617,6 +617,7 @@
     <div class="sidebar-label">Top Skills</div>
     <div class="tag-cloud" style="margin-bottom:4px;">
       <span class="tag">AWS</span>
+      <span class="tag">Azure</span>
       <span class="tag">Linux</span>
       <!-- <span class="tag">Python</span>
       <span class="tag">PowerShell</span> -->
@@ -644,6 +645,9 @@
       <span class="cert-badge" title="CompTIA Security+" onclick="openLightbox('secplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-secplus.webp" alt="CompTIA Security+" />
       </span>
+      <span class="cert-badge" title="CompTIA Project+">
+        <img src="cert-projplus.webp" alt="CompTIA Project+" />
+      </span>
       <span class="cert-badge" title="ITIL 4 Foundation" onclick="openLightbox('itil.png')" style="cursor:zoom-in;">
         <img src="cert-itil.png" alt="ITIL 4 Foundation" style="padding: 8px;" />
       </span>
@@ -653,9 +657,8 @@
       <span class="cert-badge" title="AWS Cloud Practitioner" onclick="openLightbox('cert-aws-ccp.png')" style="cursor:zoom-in;">
         <img src="cert-awsccp.webp" alt="AWS Cloud Practitioner" />
       </span>
-      <span class="cert-badge in-progress" title="Microsoft Azure Fundamentals — In Progress">
+      <span class="cert-badge" title="Microsoft Azure Fundamentals" onclick="openLightbox('cert-az-900.png')" style="cursor:zoom-in;">
         <img src="az-900-badge.png" alt="Microsoft Azure Fundamentals" />
-        <span class="cert-progress-label">in progress</span>
       </span>
     </div>
 
@@ -723,6 +726,25 @@
 
       <div class="project-card">
         <div class="project-body">
+          <div class="project-title">Cloud Resume Challenge</div>
+          <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · Terraform · GitHub Actions</div>
+          <ul>
+            <li>Built and deployed this resume using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
+            <li>Provisioned SSL certificate via ACM with HTTPS enforced at the CloudFront layer</li>
+            <li>Implemented serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
+            <li>Infrastructure as Code with Terraform; automated deployments via GitHub Actions CI/CD</li>
+          </ul>
+          <div>
+            <a href="https://github.com/NicholasMads14/cloud-resume-challenge" target="_blank" class="project-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-body">
           <div class="project-title">Movie Ranking Web App</div>
           <div class="project-stack">Lambda · DynamoDB · Cognito · API Gateway · S3 · CloudFront · Route 53 · ACM · React · Vite</div>
           <ul>
@@ -737,25 +759,6 @@
               Live demo
             </a>
             <a href="https://github.com/NicholasMads14/movie-ranking-app" target="_blank" class="project-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-body">
-          <div class="project-title">Cloud Resume Challenge</div>
-          <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · Terraform · GitHub Actions</div>
-          <ul>
-            <li>Built and deployed this resume using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
-            <li>Provisioned SSL certificate via ACM with HTTPS enforced at the CloudFront layer</li>
-            <li>Implemented serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
-            <li>Infrastructure as Code with Terraform; automated deployments via GitHub Actions CI/CD</li>
-          </ul>
-          <div>
-            <a href="https://github.com/NicholasMads14/cloud-resume-challenge" target="_blank" class="project-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               GitHub
             </a>
