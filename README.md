@@ -8,7 +8,7 @@ A cloud-hosted resume built on AWS as part of the [Cloud Resume Challenge](https
 - **CloudFront** — CDN and HTTPS enforcement
 - **ACM** — SSL/TLS certificate
 - **Route 53** — DNS management
-- **API Gateway + Lambda + DynamoDB** — Serverless visitor counter (coming soon)
+- **API Gateway + Lambda + DynamoDB** — Serverless visitor counter
 - **Terraform** — Infrastructure as Code (coming soon)
 - **GitHub Actions** — CI/CD pipeline
 

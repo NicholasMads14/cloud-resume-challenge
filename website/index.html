@@ -455,7 +455,9 @@
 
     .project-body { padding: 18px 22px 20px; }
 
-    .project-title { font-size: 16px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+    .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
+    .project-title { font-size: 16px; font-weight: 700; color: var(--heading); }
+    .project-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 
     .project-stack {
       font-family: var(--mono);
@@ -646,7 +648,7 @@
       <span class="cert-badge" title="CompTIA Security+" onclick="openLightbox('secplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-secplus.webp" alt="CompTIA Security+" />
       </span>
-      <span class="cert-badge" title="CompTIA Project+">
+      <span class="cert-badge" title="CompTIA Project+" onclick="openLightbox('projplus.jpg')" style="cursor:zoom-in;">
         <img src="cert-projplus.webp" alt="CompTIA Project+" />
       </span>
       <span class="cert-badge" title="ITIL 4 Foundation" onclick="openLightbox('itil.png')" style="cursor:zoom-in;">
@@ -727,7 +729,10 @@
 
       <div class="project-card">
         <div class="project-body">
-          <div class="project-title">Cloud Resume Challenge</div>
+          <div class="project-top">
+            <div class="project-title">Cloud Resume Challenge</div>
+            <div class="project-meta">Feb 2026 – Present</div>
+          </div>
           <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · Terraform · GitHub Actions</div>
           <ul>
             <li>Built and deployed this resume using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
@@ -746,7 +751,10 @@
 
       <div class="project-card">
         <div class="project-body">
-          <div class="project-title">Movie Ranking Web App</div>
+          <div class="project-top">
+            <div class="project-title">Movie Ranking Web App</div>
+            <div class="project-meta">Mar 2026 – Present</div>
+          </div>
           <div class="project-stack">Lambda · DynamoDB · Cognito · API Gateway · S3 · CloudFront · Route 53 · ACM · React · Vite</div>
           <ul>
             <li>Full-stack serverless web app for our 6-person movie club to rank and compare 130+ films across 7 tiers with drag-and-drop reordering — optimized for mobile</li>
@@ -769,7 +777,10 @@
 
       <div class="project-card">
         <div class="project-body">
-          <div class="project-title">Personal Linux HomeLab</div>
+          <div class="project-top">
+            <div class="project-title">Personal Linux HomeLab</div>
+            <div class="project-meta">Oct – Nov 2025</div>
+          </div>
           <div class="project-stack">Ubuntu · Docker · Caddy · Tailscale · DuckDNS · UFW · MariaDB</div>
           <ul>
             <li>Repurposed a Lenovo ThinkCentre M900 to run Ubuntu as a self-hosted server</li>
