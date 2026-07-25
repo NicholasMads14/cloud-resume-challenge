@@ -12,3 +12,8 @@ desktop.ini
 *.env
 .env
 secrets.*
+
+# Local design previews - live in website/ so relative image paths work,
+# but must never be committed (deploy.yml syncs all of ./website to S3)
+website/preview-*.html
+design-previews/

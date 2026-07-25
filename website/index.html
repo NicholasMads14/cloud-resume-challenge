@@ -27,17 +27,17 @@
 
     /* ── LIGHT MODE ── */
     html.light {
-      --bg:          #f4f5f7;
-      --sidebar-bg:  #ffffff;
-      --surface:     #ffffff;
-      --surface2:    #eef0f3;
-      --border:      #dde1e8;
-      --accent:      #d06a20;
-      --accent-dim:  rgba(208,106,32,0.08);
-      --accent-glow: rgba(208,106,32,0.2);
-      --text:        #3a3f4a;
-      --heading:     #1a1d24;
-      --muted:       #8a92a0;
+      --bg:          #f2f5f8;
+      --sidebar-bg:  #fbfcfd;
+      --surface:     #fbfcfd;
+      --surface2:    #e9eef3;
+      --border:      #d7dfe8;
+      --accent:      #c2621d;
+      --accent-dim:  rgba(194,98,29,0.08);
+      --accent-glow: rgba(194,98,29,0.2);
+      --text:        #3b434e;
+      --heading:     #141a22;
+      --muted:       #828d9b;
     }
 
     /* ── THEME TOGGLE ── */
@@ -550,6 +550,15 @@
 
     footer a { color: var(--accent); text-decoration: none; }
 
+    .footer-credit {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      margin-top: 20px;
+    }
+
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
       .sidebar { position: static; height: auto; }
@@ -588,7 +597,7 @@
       height: 940px;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.55;
+      opacity: 1;
     }
 
     .main { position: relative; }
@@ -596,7 +605,9 @@
     .sidebar { z-index: 2; }
 
     @media (max-width: 900px) {
-      .arcs { top: -120px; right: -300px; width: 520px; height: 760px; opacity: 0.4; }
+      /* position/size only - opacity inherits the base rule so arc
+         weight stays identical to desktop */
+      .arcs { top: -120px; right: -300px; width: 520px; height: 760px; }
     }
 
     /* ═══════════════════════════════════════════════════
@@ -611,8 +622,9 @@
 
     .sidebar-role {
       font-family: var(--mono);
-      font-size: 10.5px;
-      font-weight: 400;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.95;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.28em;
@@ -674,6 +686,54 @@
     .project-stack { letter-spacing: 0.03em; font-size: 11.5px; }
     .card-meta, .project-meta { font-size: 12px; letter-spacing: 0.02em; }
 
+
+    /* ═══════════════════════════════════════════════════
+       PROJECT SHOTS — justified single row.
+
+       Each <a> gets flex-grow equal to its image's aspect
+       ratio (set inline as --ar). Widths then distribute
+       proportionally, which makes every image resolve to
+       the SAME height automatically, at any container
+       width. Never wraps; shrinks together on narrow
+       screens. max-width caps the height at ~330px.
+       ═══════════════════════════════════════════════════ */
+    .project-shots {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      gap: 8px;
+      margin-left: 22px;
+      margin-top: 14px;
+      max-width: 1060px;
+    }
+
+    .project-shots a {
+      flex: var(--ar) 1 0;
+      min-width: 0;
+      display: block;
+      line-height: 0;
+    }
+
+    .project-shots img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: border-color 0.25s, opacity 0.25s;
+    }
+
+    .project-shots a:hover img {
+      border-color: var(--accent);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .project-shots { gap: 5px; }
+      .project-shots img { border-radius: 4px; }
+    }
+
   </style>
 <meta property="og:title" content="Nicholas Madson – IT · Cloud Computing" />
 <meta property="og:description" content="IT Technician building toward Cloud Engineering. MSP experience, AWS certs, homelab projects." />
@@ -702,10 +762,10 @@
 
 <!-- Fixed background arc motif -->
 <svg class="arcs" viewBox="0 0 640 940" fill="none" aria-hidden="true">
-  <circle cx="580" cy="450" r="255" stroke="var(--accent)" stroke-width="1" opacity="0.22"/>
-  <circle cx="580" cy="450" r="340" stroke="var(--accent)" stroke-width="1" opacity="0.16"/>
-  <circle cx="580" cy="450" r="425" stroke="var(--accent)" stroke-width="1" opacity="0.11"/>
-  <circle cx="580" cy="450" r="510" stroke="var(--accent)" stroke-width="1" opacity="0.07"/>
+  <circle cx="580" cy="450" r="255" stroke="var(--accent)" stroke-width="1.5" opacity="0.28"/>
+  <circle cx="580" cy="450" r="340" stroke="var(--accent)" stroke-width="1.5" opacity="0.21"/>
+  <circle cx="580" cy="450" r="425" stroke="var(--accent)" stroke-width="1.5" opacity="0.14"/>
+  <circle cx="580" cy="450" r="510" stroke="var(--accent)" stroke-width="1.5" opacity="0.09"/>
 </svg>
 
 <div class="layout">
@@ -717,7 +777,7 @@
     <div id="ph" class="profile-placeholder">👤</div>
 
     <div class="sidebar-name">Nicholas <span>Madson</span></div>
-    <div class="sidebar-role">IT Technician · Cloud Computing Student</div>
+    <div class="sidebar-role">Information Technology<br/>Cloud Computing</div>
 
     <div class="contact-links">
       <a href="mailto:nicholasmads14@gmail.com" class="contact-link">
@@ -862,12 +922,12 @@
             <div class="project-title">Cloud Resume Challenge</div>
             <div class="project-meta">Feb 2026 – Present</div>
           </div>
-          <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · Terraform · GitHub Actions</div>
+          <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · GitHub Actions</div>
           <ul>
             <li>Built and deployed this resume using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
             <li>Provisioned SSL certificate via ACM with HTTPS enforced at the CloudFront layer</li>
             <li>Implemented serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
-            <li>Infrastructure as Code with Terraform; automated deployments via GitHub Actions CI/CD</li>
+            <li>Automated deployments via GitHub Actions CI/CD</li>
           </ul>
           <div>
             <a href="https://github.com/NicholasMads14/cloud-resume-challenge" target="_blank" class="project-link">
@@ -901,6 +961,11 @@
               GitHub
             </a>
           </div>
+        </div>
+        <div class="project-shots">
+          <a style="--ar:0.512" onclick="openLightbox('mra-Rank.jpg')"><img src="mra-Rank.jpg" alt="Movie Ranking App — tier ranking view on mobile" /></a>
+          <a style="--ar:0.535" onclick="openLightbox('mra-Reorder.jpg')"><img src="mra-Reorder.jpg" alt="Movie Ranking App — drag-and-drop reordering" /></a>
+          <a style="--ar:2.118" onclick="openLightbox('mra-Everyone.jpg')"><img src="mra-Everyone.jpg" alt="Movie Ranking App — compare-everyone view" /></a>
         </div>
       </div>
 
@@ -953,6 +1018,7 @@
         &nbsp;·&nbsp;
         <a href="https://www.linkedin.com/in/nicholasmads14/" target="_blank">LinkedIn</a>
       </p>
+      <div class="footer-credit">&copy; 2026 Nicholas Madson</div>
     </footer>
 
   </main>
