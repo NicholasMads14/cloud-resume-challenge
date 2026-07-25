@@ -10,17 +10,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:          #111214;
-      --sidebar-bg:  #181a1e;
-      --surface:     #1e2026;
-      --surface2:    #252830;
-      --border:      #2a2d35;
+      --bg:          #0c0d0f;
+      --sidebar-bg:  #131416;
+      --surface:     #17191c;
+      --surface2:    #1e2023;
+      --border:      #26292e;
       --accent:      #e8843a;
       --accent-dim:  rgba(232,132,58,0.12);
       --accent-glow: rgba(232,132,58,0.25);
-      --text:        #b8bcc8;
-      --heading:     #eceef2;
-      --muted:       #585d6e;
+      --text:        #b9bec7;
+      --heading:     #f4f6f8;
+      --muted:       #5d626c;
       --mono:        'DM Mono', monospace;
       --sans:        'DM Sans', sans-serif;
     }
@@ -456,7 +456,7 @@
     .project-body { padding: 18px 22px 20px; }
 
     .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
-    .project-title { font-size: 16px; font-weight: 700; color: var(--heading); }
+    .project-title { font-size: 16px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
     .project-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 
     .project-stack {
@@ -555,6 +555,125 @@
       .sidebar { position: static; height: auto; }
       .main { padding: 32px 20px 60px; }
     }
+
+
+    /* ═══════════════════════════════════════════════════
+       FILM GRAIN — fixed overlay across the whole page
+       ═══════════════════════════════════════════════════ */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      opacity: 0.030;
+    }
+    html.light body::before { opacity: 0.048; }
+
+    /* ═══════════════════════════════════════════════════
+       ARC MOTIF — fixed so it holds position on scroll.
+       Lives outside .main on purpose: .main keeps a
+       transform from its fadeIn animation (fill-mode:both),
+       and a transformed ancestor becomes the containing
+       block for position:fixed, which would pin the arcs
+       to .main instead of the viewport.
+       ═══════════════════════════════════════════════════ */
+    .arcs {
+      position: fixed;
+      top: -170px;
+      right: -250px;
+      width: 640px;
+      height: 940px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .main { position: relative; }
+    .main > .section, .main > footer { position: relative; z-index: 1; }
+    .sidebar { z-index: 2; }
+
+    @media (max-width: 900px) {
+      .arcs { top: -120px; right: -300px; width: 520px; height: 760px; opacity: 0.4; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       NAME LOCKUP — rule + wide-tracked mono role
+       ═══════════════════════════════════════════════════ */
+    .sidebar-name {
+      font-size: 25px;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .sidebar-role {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      font-weight: 400;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      margin-bottom: 20px;
+      padding-top: 14px;
+      position: relative;
+    }
+
+    .sidebar-role::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 44px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SPINE CARDS — accent rail replaces the boxed card
+       ═══════════════════════════════════════════════════ */
+    .card, .project-card, .edu-card {
+      background: transparent;
+      border: none;
+      border-left: 2px solid var(--border);
+      border-radius: 0;
+      margin-bottom: 22px;
+      overflow: visible;
+      transition: border-color 0.3s;
+    }
+
+    .card, .edu-card { padding: 4px 0 4px 22px; }
+    .project-body { padding: 4px 0 4px 22px; }
+
+    .card:hover, .project-card:hover, .edu-card:hover {
+      background: transparent;
+      border-left-color: var(--accent);
+    }
+
+    /* retire the old boxed-card hover wash */
+    .card::after, .project-card::after, .edu-card::after { display: none; }
+
+    .project-images {
+      margin-left: 22px;
+      margin-top: 12px;
+      background: transparent;
+      gap: 6px;
+    }
+
+    .project-images img { border-radius: 5px; }
+
+    /* ═══════════════════════════════════════════════════
+       MICRO-REFINEMENTS
+       ═══════════════════════════════════════════════════ */
+    .sidebar-label { letter-spacing: 0.2em; font-size: 11px; }
+    .profile-photo { border-radius: 14px; border-width: 1px; }
+    .tag { border-radius: 3px; font-size: 11.5px; }
+    .section-line { background: linear-gradient(to right, var(--border), transparent 85%); }
+    .project-stack { letter-spacing: 0.03em; font-size: 11.5px; }
+    .card-meta, .project-meta { font-size: 12px; letter-spacing: 0.02em; }
+
   </style>
 <meta property="og:title" content="Nicholas Madson – IT · Cloud Computing" />
 <meta property="og:description" content="IT Technician building toward Cloud Engineering. MSP experience, AWS certs, homelab projects." />
@@ -579,6 +698,15 @@
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
   </svg>
 </button>
+
+
+<!-- Fixed background arc motif -->
+<svg class="arcs" viewBox="0 0 640 940" fill="none" aria-hidden="true">
+  <circle cx="580" cy="450" r="255" stroke="var(--accent)" stroke-width="1" opacity="0.22"/>
+  <circle cx="580" cy="450" r="340" stroke="var(--accent)" stroke-width="1" opacity="0.16"/>
+  <circle cx="580" cy="450" r="425" stroke="var(--accent)" stroke-width="1" opacity="0.11"/>
+  <circle cx="580" cy="450" r="510" stroke="var(--accent)" stroke-width="1" opacity="0.07"/>
+</svg>
 
 <div class="layout">
 
@@ -613,7 +741,7 @@
     <div class="sidebar-divider"></div>
 
     <div class="sidebar-label">About</div>
-    <p class="sidebar-summary">IT Technician with hands-on MSP experience across networking, infrastructure, and endpoint systems. Pursuing a B.S. in Cloud Computing at WGU and building toward Cloud Engineering through real-world infrastructure work, homelab & cloud projects, and certifications across CompTIA, AWS, & Azure. Strong communication from 5+ years in customer-facing roles.</p>
+    <p class="sidebar-summary">IT Technician with hands-on MSP experience across networking, infrastructure, and endpoint systems. Pursuing a B.S. in Cloud Computing at WGU and building toward Cloud Engineering through real-world infrastructure work, homelab & cloud projects, and certifications across CompTIA, AWS, & Azure. Strong communication with both technical teams and non-technical clients.</p>
 
     <div class="sidebar-divider"></div>
 
@@ -622,8 +750,8 @@
       <span class="tag">AWS</span>
       <span class="tag">Azure</span>
       <span class="tag">Linux</span>
-      <!-- <span class="tag">Python</span>
-      <span class="tag">PowerShell</span> -->
+      <span class="tag">CI/CD</span>
+      <span class="tag">Bash</span>
       <span class="tag">Git</span>
       <span class="tag">Networking</span>
       <span class="tag">TCP/IP</span>
@@ -632,7 +760,8 @@
       <span class="tag">Active Directory</span>
       <span class="tag">Microsoft 365</span>
       <span class="tag">Virtualization</span>
-      <span class="tag">RMM Tools</span>
+      <!-- <span class="tag">Python</span>
+      <span class="tag">PowerShell</span> -->
     </div>
 
     <div class="sidebar-divider"></div>
