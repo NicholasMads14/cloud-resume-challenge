@@ -28,7 +28,19 @@ jobs:
           aws s3 sync ./website s3://nicholasmadson.dev \
             --delete \
             --exclude "*.html" \
+            --exclude "thumbnail*.png" \
             --cache-control "public,max-age=31536000,immutable"
+
+      # The OG image is never fetched by a page visitor - only by link
+      # scrapers (iMessage, LinkedIn, WhatsApp). A long cache buys real
+      # users nothing and just makes the preview image impossible to
+      # update without renaming it, so keep this one short.
+      - name: Sync OG image to S3 (short cache)
+        run: |
+          aws s3 sync ./website s3://nicholasmadson.dev \
+            --exclude "*" \
+            --include "thumbnail*.png" \
+            --cache-control "public,max-age=3600"
 
       # HTML must revalidate every request, otherwise a returning
       # visitor keeps a stale index.html in their own browser cache
