@@ -459,6 +459,14 @@
     .project-title { font-size: 16px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
     .project-meta { font-family: var(--mono); font-size: 13px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 
+    /* first-person intent line above each project's bullets */
+    .project-intro{
+      font-size: 14.5px;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 11px;
+    }
+
     .project-stack {
       font-family: var(--mono);
       font-size: 12px;
@@ -726,10 +734,95 @@
       .project-shots img { border-radius: 4px; }
     }
 
+
+
+    /* ═══════════════════════════════════════════════════
+       CURRENTLY WORKING ON
+       ═══════════════════════════════════════════════════ */
+    .now-section{ margin-bottom:50px; }
+    .now-header{
+      display:flex; align-items:center; gap:12px;
+      cursor:pointer; user-select:none; width:100%; text-align:left;
+      background:none; border:none; padding:0;
+    }
+    .now-header .section-title{ transition:color .22s; }
+    .now-header:hover .section-title{ color:var(--accent); }
+    /* Triforce indicator — the three solids pulse in sequence:
+       top, then right, then left. Fill uses --accent so it follows
+       the theme, and the hollow centre is real negative space. */
+    .now-dot{
+      flex-shrink:0;
+      display:inline-flex; align-items:center; justify-content:center;
+      line-height:1;
+    }
+
+    .triforce{ width:17px; height:auto; display:block; }
+    .triforce polygon{
+      fill:var(--accent);
+      opacity:0.20;
+      animation:triPulse 2.4s ease-in-out infinite;
+    }
+    .triforce .t-top   { animation-delay:0s;    }
+    .triforce .t-right { animation-delay:0.8s;  }
+    .triforce .t-left  { animation-delay:1.6s;  }
+
+    @keyframes triPulse{
+      0%   { opacity:0.20; }
+      8%   { opacity:1;    }
+      26%  { opacity:1;    }
+      44%  { opacity:0.20; }
+      100% { opacity:0.20; }
+    }
+
+    /* hold all three lit rather than chasing, for motion sensitivity */
+    @media (prefers-reduced-motion: reduce){
+      .triforce polygon{ animation:none; opacity:0.85; }
+    }
+    .now-chev{
+      width:18px; height:18px; flex-shrink:0; color:var(--muted);
+      transition:transform .3s, color .22s;
+    }
+    .now-header:hover .now-chev{ color:var(--accent); }
+    .now-section.open .now-chev{ transform:rotate(180deg); }
+
+    .now-panel{
+      max-height:0; overflow:hidden; opacity:0;
+      transition:max-height .38s cubic-bezier(.3,.8,.3,1), opacity .28s;
+    }
+    .now-section.open .now-panel{ max-height:640px; opacity:1; }
+    .now-inner{ padding-top:22px; }
+
+    .now-group-label{
+      font-family:var(--mono); font-size:11px; font-weight:500;
+      letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);
+      margin-bottom:14px;
+    }
+    .now-group + .now-group{ margin-top:26px; }
+
+    .now-item{
+      border-left:2px solid var(--border);
+      padding:4px 0 4px 22px; margin-bottom:18px;
+      transition:border-color .3s;
+    }
+    .now-item:last-child{ margin-bottom:0; }
+    .now-item:hover{ border-left-color:var(--accent); }
+    .now-item-name{ font-size:16px; font-weight:700; color:var(--heading); }
+    .now-item-desc{ font-size:14.5px; color:var(--text); line-height:1.65; margin-top:3px; }
+
   </style>
 <meta property="og:title" content="Nicholas Madson – IT · Cloud Computing" />
 <meta property="og:description" content="IT Technician building toward Cloud Engineering. MSP experience, AWS certs, homelab projects." />
 <meta property="og:image" content="https://nicholasmadson.dev/thumbnail-v2.png" />
+<script>
+  // Applied before first paint so a returning light-mode visitor never
+  // sees a flash of dark. Dark stays the default: the class is only
+  // added when light was explicitly chosen on a previous visit.
+  try {
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light');
+    }
+  } catch (e) {}
+</script>
 </head>
 <body>
 
@@ -801,19 +894,17 @@
     <div class="tag-cloud" style="margin-bottom:4px;">
       <span class="tag">AWS</span>
       <span class="tag">Azure</span>
-      <span class="tag">Linux</span>
+      <span class="tag">Serverless</span>
       <span class="tag">CI/CD</span>
-      <span class="tag">Bash</span>
+      <span class="tag">PowerShell</span>
       <span class="tag">Git</span>
-      <span class="tag">Networking</span>
-      <span class="tag">TCP/IP</span>
-      <span class="tag">DNS/DHCP</span>
-      <span class="tag">SDN</span>
+      <span class="tag">IAM</span>
+      <span class="tag">Linux</span>
       <span class="tag">Active Directory</span>
+      <span class="tag">Hyper-V</span>
+      <span class="tag">Networking</span>
+      <span class="tag">Backup &amp; DR</span>
       <span class="tag">Microsoft 365</span>
-      <span class="tag">Virtualization</span>
-      <!-- <span class="tag">Python</span>
-      <span class="tag">PowerShell</span> -->
     </div>
 
     <div class="sidebar-divider"></div>
@@ -914,12 +1005,13 @@
             <div class="project-title">Cloud Resume Challenge</div>
             <div class="project-meta">Feb 2026 – Present</div>
           </div>
+          <p class="project-intro">Built this site to learn how the core AWS services actually fit together end to end, and to have one place of my own to put everything else I build.</p>
           <div class="project-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · GitHub Actions</div>
           <ul>
-            <li>Built and deployed this resume using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
-            <li>Provisioned SSL certificate via ACM with HTTPS enforced at the CloudFront layer</li>
-            <li>Implemented serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
-            <li>Automated deployments via GitHub Actions CI/CD</li>
+            <li>Static build hosted in S3, distributed through CloudFront with a Route 53 custom domain</li>
+            <li>HTTPS enforced at the CloudFront layer using a certificate provisioned through ACM</li>
+            <li>Serverless visitor counter running on API Gateway, Lambda, and DynamoDB</li>
+            <li>GitHub Actions pipeline that builds and deploys on every push to main</li>
           </ul>
           <div>
             <a href="https://github.com/NicholasMads14/cloud-resume-challenge" target="_blank" class="project-link">
@@ -936,12 +1028,13 @@
             <div class="project-title">Movie Ranking Web App</div>
             <div class="project-meta">Mar 2026 – Present</div>
           </div>
+          <p class="project-intro">Built for my friends' movie club to rank and compare every film we've watched together. I added a public demo environment alongside the private one specifically to work out how dual deployment from a single codebase is handled in practice.</p>
           <div class="project-stack">Lambda · DynamoDB · Cognito · API Gateway · S3 · CloudFront · Route 53 · ACM · React · Vite</div>
           <ul>
-            <li>Full-stack serverless web app for our 6-person movie club to rank and compare 130+ films across 7 tiers with drag-and-drop reordering — optimized for mobile</li>
-            <li>Cognito authentication with per-user rankings stored in DynamoDB; JWT-authorized API Gateway routes</li>
-            <li>Two isolated deployments from one codebase — production (private) and a public demo environment</li>
-            <li>Responsive React frontend with real-time saves, search, admin controls, and a compare-everyone view</li>
+            <li>Ranks 130+ films across 7 tiers with drag-and-drop reordering, built to work on both mobile and desktop</li>
+            <li>Cognito authentication with JWT-authorized API Gateway routes and per-user rankings stored in DynamoDB</li>
+            <li>Lambda execution role scoped to specific DynamoDB actions on four tables instead of a managed full-access policy</li>
+            <li>React and Vite frontend with real-time saves, search, admin controls, and a side-by-side comparison view</li>
           </ul>
           <div>
             <a href="https://mra-demo.nicholasmadson.dev" target="_blank" class="project-link">
@@ -967,11 +1060,11 @@
             <div class="project-title">Personal Linux HomeLab</div>
             <div class="project-meta">Oct – Nov 2025</div>
           </div>
+          <p class="project-intro">Built on a repurposed Lenovo ThinkCentre M900 to get hands-on with self-hosted infrastructure outside of work, running services I actually use day to day.</p>
           <div class="project-stack">Ubuntu · Docker · Caddy · Tailscale · DuckDNS · UFW · MariaDB</div>
           <ul>
-            <li>Repurposed a Lenovo ThinkCentre M900 to run Ubuntu as a self-hosted server</li>
-            <li>Deployed Docker containers (ActualBudget, RomM) with persistent storage and log management</li>
-            <li>Hosted services publicly with DuckDNS and a Caddy HTTPS reverse proxy</li>
+            <li>Ubuntu server running containerized services (ActualBudget, RomM) with persistent storage and log management</li>
+            <li>Exposed publicly over HTTPS through DuckDNS and a Caddy reverse proxy with automatic TLS</li>
             <li>Hardened access with UFW firewall rules, SSH config, and Tailscale zero-trust networking</li>
           </ul>
         </div>
@@ -982,6 +1075,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- EDUCATION -->
     <div class="section">
@@ -1000,6 +1094,45 @@
         <div class="edu-school">Cuesta College</div>
         <div class="edu-degree">A.A. Liberal Arts: Social & Behavioral Sciences</div>
         <div class="edu-dates">Aug 2022 – Dec 2024 · San Luis Obispo, CA</div>
+      </div>
+    </div>
+
+    <!-- CURRENTLY WORKING ON -->
+    <div class="section now-section" id="now">
+      <button class="section-header now-header" onclick="toggleNow()" aria-expanded="false">
+        <span class="now-dot" aria-hidden="true"><svg class="triforce" viewBox="0 0 24 20.78" xmlns="http://www.w3.org/2000/svg"><polygon class="t-top" points="12,0 18,10.39 6,10.39"/><polygon class="t-right" points="18,10.39 24,20.78 12,20.78"/><polygon class="t-left" points="6,10.39 12,20.78 0,20.78"/></svg></span>
+        <span class="section-title">Currently Working On</span>
+        <svg class="now-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
+        <span class="section-line"></span>
+      </button>
+      <div class="now-panel">
+        <div class="now-inner">
+
+          <div class="now-group">
+            <div class="now-group-label">Work</div>
+            <div class="now-item">
+              <div class="now-item-name">Automating user provisioning with Active Directory &amp; Group Policy</div>
+              <div class="now-item-desc">Standardizing new-user onboarding through folder redirection and GPO so account creation is repeatable and documented instead of manual.</div>
+            </div>
+            <div class="now-item">
+              <div class="now-item-name">Disaster recovery validation with Veeam 13 SureBackup</div>
+              <div class="now-item-desc">Automating backup verification in an isolated virtual lab to prove restores actually work before they are needed.</div>
+            </div>
+          </div>
+
+          <div class="now-group">
+            <div class="now-group-label">School</div>
+            <div class="now-item">
+              <div class="now-item-name">CompTIA Cloud+</div>
+              <div class="now-item-desc">Deepening cloud infrastructure, virtualization, and systems troubleshooting fundamentals beyond the associate level.</div>
+            </div>
+            <div class="now-item">
+              <div class="now-item-name">Microsoft AZ-104 — Azure Administrator</div>
+              <div class="now-item-desc">Building administrator-level Azure depth to pair with AWS for genuine multi-cloud coverage.</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -1027,9 +1160,12 @@
     localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
   }
 
-  // Restore saved theme preference (default: dark)
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.classList.add('light');
+
+  // Currently working on
+  function toggleNow(){
+    var n = document.getElementById('now');
+    var open = n.classList.toggle('open');
+    n.querySelector('.now-header').setAttribute('aria-expanded', open);
   }
 
   // Lightbox

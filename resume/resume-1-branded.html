@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Nicholas Madson — Resume (Branded)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --ink:#14161a;
+    --body:#3d434d;
+    --muted:#7c8492;
+    --rule:#dfe3e8;
+    --accent:#c2621d;
+    --mono:'DM Mono',monospace;
+    --sans:'DM Sans',sans-serif;
+  }
+
+  @page{ size:letter; margin:0.5in; }
+
+  html{ background:#5c6068; }
+  body{ font-family:var(--sans); color:var(--body); font-size:10pt; line-height:1.42; }
+
+  /* on-screen: show a letter-size sheet */
+  .sheet{
+    width:8.5in; min-height:11in; margin:24px auto; padding:0.5in;
+    background:#fff; box-shadow:0 6px 40px rgba(0,0,0,.4);
+  }
+
+  /* ── header ── */
+  .name{
+    font-size:27pt; font-weight:700; color:var(--ink);
+    letter-spacing:-.032em; line-height:1;
+  }
+  .name span{ color:var(--accent); }
+  .role{
+    font-family:var(--mono); font-size:8pt; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--muted); margin-top:8px;
+  }
+  .contact{
+    font-family:var(--mono); font-size:8.2pt; color:var(--body);
+    margin-top:10px; padding-top:10px; border-top:1.5px solid var(--accent);
+    display:flex; flex-wrap:wrap; gap:4px 14px;
+  }
+  .contact a{ color:var(--body); text-decoration:none; }
+  .contact .sep{ color:var(--rule); }
+
+  .summary{ margin-top:12px; font-size:9.6pt; line-height:1.55; }
+  .summary strong{ color:var(--ink); font-weight:500; }
+
+  /* ── sections ── */
+  h2{
+    font-family:var(--mono); font-size:8pt; font-weight:500;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--accent);
+    margin:17px 0 9px; padding-bottom:5px; border-bottom:1px solid var(--rule);
+  }
+
+  /* spine rail, echoing the site */
+  .entry{
+    border-left:2px solid var(--rule); padding-left:13px;
+    margin-bottom:11px; page-break-inside:avoid;
+  }
+  .entry:last-child{ margin-bottom:0; }
+  .e-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; }
+  .e-title{ font-size:11pt; font-weight:700; color:var(--ink); letter-spacing:-.012em; }
+  .e-when{ font-family:var(--mono); font-size:8pt; color:var(--muted); white-space:nowrap; }
+  .e-org{ font-size:9.6pt; color:var(--accent); font-weight:500; }
+  .e-loc{ font-family:var(--mono); font-size:7.6pt; color:var(--muted); margin-top:1px; }
+  .e-stack{ font-family:var(--mono); font-size:7.8pt; color:var(--muted); margin-top:4px; }
+
+  ul{ list-style:none; margin-top:5px; }
+  li{ position:relative; padding-left:12px; margin-bottom:2.5px; font-size:9.4pt; line-height:1.44; }
+  li::before{
+    content:''; position:absolute; left:0; top:.5em;
+    width:4px; height:1px; background:var(--accent);
+  }
+
+  /* ── two-up bottom row ── */
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:0 26px; }
+
+  .skills{ display:flex; flex-wrap:wrap; gap:4px; }
+  .skills span{
+    font-family:var(--mono); font-size:7.8pt; color:var(--body);
+    border:1px solid var(--rule); border-radius:2px; padding:2px 6px;
+  }
+
+  .certs{ font-size:9.2pt; }
+  .certs div{ display:flex; justify-content:space-between; gap:10px; padding:1.5px 0; }
+  .certs .c-when{ font-family:var(--mono); font-size:7.8pt; color:var(--muted); white-space:nowrap; }
+
+  @media print{
+    html{ background:#fff; }
+    body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .sheet{ width:auto; min-height:0; margin:0; padding:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="name">Nicholas <span>Madson</span></div>
+  <div class="role">Information Technology &middot; Cloud Computing</div>
+
+  <div class="contact">
+    <span>San Luis Obispo, CA</span><span class="sep">|</span>
+    <a href="mailto:nicholasmads14@gmail.com">nicholasmads14@gmail.com</a><span class="sep">|</span>
+    <a href="https://nicholasmadson.dev">nicholasmadson.dev</a><span class="sep">|</span>
+    <a href="https://linkedin.com/in/nicholasmads14">linkedin/nicholasmads14</a><span class="sep">|</span>
+    <a href="https://github.com/NicholasMads14">github/nicholasmads14</a>
+  </div>
+
+  <p class="summary">
+    IT Technician with hands-on MSP experience across networking, infrastructure, and endpoint
+    systems. Pursuing a <strong>B.S. in Cloud Computing</strong> at WGU and building toward Cloud
+    Engineering through real-world infrastructure work, homelab &amp; cloud projects, and
+    certifications across CompTIA, AWS, &amp; Azure. Strong communication with both technical
+    teams and non-technical clients.
+  </p>
+
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="e-top">
+      <div>
+        <div class="e-title">IT Technician</div>
+        <div class="e-org">Lattis Networks</div>
+      </div>
+      <div class="e-when">Dec 2025 – Present</div>
+    </div>
+    <div class="e-loc">Atascadero, CA · Hybrid</div>
+    <ul>
+      <li>Troubleshoot and resolve network outages, misconfigured infrastructure, and endpoint issues across diverse small business client environments</li>
+      <li>Administer Active Directory, Hyper-V, Meraki dashboards, and firewall configurations</li>
+      <li>Manage physical infrastructure, cabling, endpoint security, and user permissions</li>
+      <li>Onboard new client environments including workstation setup and network documentation</li>
+      <li>Coordinate with vendors and senior technicians to escalate complex infrastructure issues</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="e-top">
+      <div>
+        <div class="e-title">Assistant Office Manager</div>
+        <div class="e-org">Rogers Jewelry Company</div>
+      </div>
+      <div class="e-when">May 2024 – Dec 2025</div>
+    </div>
+    <div class="e-loc">San Luis Obispo, CA · On-site</div>
+    <ul>
+      <li>Managed CRM systems and maintained data accuracy across multiple store locations</li>
+      <li>Performed PC, printer, and network troubleshooting for staff</li>
+      <li>Handled bookkeeping, data entry, and daily administrative operations</li>
+    </ul>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="entry">
+    <div class="e-top">
+      <div class="e-title">Cloud Resume Challenge</div>
+      <div class="e-when">Feb 2026 – Present</div>
+    </div>
+    <div class="e-stack">S3 · CloudFront · Route 53 · ACM · Lambda · DynamoDB · API Gateway · GitHub Actions</div>
+    <ul>
+      <li>Built and deployed a personal portfolio using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
+      <li>Provisioned SSL via ACM with HTTPS enforced at the CloudFront layer</li>
+      <li>Implemented a serverless visitor counter: API Gateway → Lambda → DynamoDB</li>
+      <li>Automated deployments through GitHub Actions CI/CD</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="e-top">
+      <div class="e-title">Movie Ranking Web App</div>
+      <div class="e-when">Mar 2026 – Present</div>
+    </div>
+    <div class="e-stack">Lambda · DynamoDB · Cognito · API Gateway · S3 · CloudFront · React · Vite</div>
+    <ul>
+      <li>Full-stack serverless application for ranking and comparing 130+ films across 7 tiers with drag-and-drop reordering</li>
+      <li>Cognito authentication with per-user data in DynamoDB behind JWT-authorized API Gateway routes</li>
+      <li>Two isolated deployments from a single codebase — private production and a public demo</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="e-top">
+      <div class="e-title">Personal Linux HomeLab</div>
+      <div class="e-when">Oct – Nov 2025</div>
+    </div>
+    <div class="e-stack">Ubuntu · Docker · Caddy · Tailscale · DuckDNS · UFW · MariaDB</div>
+    <ul>
+      <li>Repurposed a Lenovo ThinkCentre M900 into an Ubuntu self-hosted server running multiple Docker services</li>
+      <li>Exposed services publicly over HTTPS via DuckDNS and a Caddy reverse proxy with automatic TLS</li>
+      <li>Hardened access with UFW firewall rules, SSH configuration, and Tailscale zero-trust networking</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="entry">
+    <div class="e-top">
+      <div>
+        <div class="e-title">Western Governors University</div>
+        <div class="e-org">B.S. Cloud Computing — Multi-Cloud (AWS &amp; Azure)</div>
+      </div>
+      <div class="e-when">Jun 2025 – Nov 2026</div>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="e-top">
+      <div>
+        <div class="e-title">Cuesta College</div>
+        <div class="e-org">A.A. Liberal Arts: Social &amp; Behavioral Sciences</div>
+      </div>
+      <div class="e-when">Aug 2022 – Dec 2024</div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h2>Certifications</h2>
+      <div class="certs">
+        <div><span>CompTIA Project+</span><span class="c-when">May 2026</span></div>
+        <div><span>Microsoft Azure Fundamentals</span><span class="c-when">Apr 2026</span></div>
+        <div><span>AWS Certified Cloud Practitioner</span><span class="c-when">Mar 2026</span></div>
+        <div><span>LPI Linux Essentials</span><span class="c-when">Feb 2026</span></div>
+        <div><span>ITIL 4 Foundation</span><span class="c-when">Feb 2026</span></div>
+        <div><span>CompTIA Security+</span><span class="c-when">Feb 2026</span></div>
+        <div><span>CompTIA Network+</span><span class="c-when">Nov 2025</span></div>
+        <div><span>CompTIA A+</span><span class="c-when">Sep 2025</span></div>
+      </div>
+    </div>
+    <div>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span>AWS</span><span>Azure</span><span>Linux</span><span>CI/CD</span><span>Bash</span>
+        <span>Git</span><span>Networking</span><span>TCP/IP</span><span>DNS/DHCP</span>
+        <span>SDN</span><span>Active Directory</span><span>Microsoft 365</span><span>Virtualization</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

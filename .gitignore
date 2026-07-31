@@ -17,3 +17,8 @@ secrets.*
 # but must never be committed (deploy.yml syncs all of ./website to S3)
 website/preview-*.html
 design-previews/
+
+# Resume artifacts - held back until the content is reviewed
+website/*.pdf
+website/resume-classic.html
+website/resume-single-page.html

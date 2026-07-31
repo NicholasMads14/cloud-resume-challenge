@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Nicholas Madson — Resume (Classic / ATS-safe)</title>
+<style>
+  /* No webfonts, no colour, no columns, no icons.
+     Single linear column so applicant tracking systems parse it cleanly. */
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  @page{ size:letter; margin:0.6in; }
+
+  html{ background:#5c6068; }
+  body{
+    font-family:"Calibri","Carlito","Helvetica Neue",Arial,sans-serif;
+    color:#000; font-size:10.5pt; line-height:1.38;
+  }
+
+  .sheet{
+    width:8.5in; min-height:11in; margin:24px auto; padding:0.6in;
+    background:#fff; box-shadow:0 6px 40px rgba(0,0,0,.4);
+  }
+
+  header{ text-align:center; margin-bottom:12px; }
+  h1{
+    font-size:20pt; font-weight:700; letter-spacing:.02em;
+    text-transform:uppercase; line-height:1.1;
+  }
+  .tagline{ font-size:11pt; margin-top:3px; }
+  .contact{ font-size:9.5pt; margin-top:5px; }
+  .contact a{ color:#000; text-decoration:none; }
+
+  h2{
+    font-size:10.5pt; font-weight:700; text-transform:uppercase;
+    letter-spacing:.08em; border-bottom:1px solid #000;
+    margin:13px 0 6px; padding-bottom:2px;
+  }
+
+  .job{ margin-bottom:9px; page-break-inside:avoid; }
+  .job-line{ display:flex; justify-content:space-between; gap:14px; }
+  .job-title{ font-weight:700; font-size:10.5pt; }
+  .job-org{ font-style:italic; }
+  .job-when{ white-space:nowrap; }
+
+  ul{ margin:3px 0 0 17px; }
+  li{ margin-bottom:2px; line-height:1.4; }
+
+  .inline-list{ margin-top:2px; }
+  .inline-list b{ font-weight:700; }
+
+  p.sum{ margin-top:2px; }
+
+  @media print{
+    html{ background:#fff; }
+    .sheet{ width:auto; min-height:0; margin:0; padding:0; box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <h1>Nicholas Madson</h1>
+    <div class="tagline">IT Technician | Cloud Computing Student</div>
+    <div class="contact">
+      San Luis Obispo, CA &bull; nicholasmads14@gmail.com &bull; nicholasmadson.dev<br/>
+      linkedin.com/in/nicholasmads14 &bull; github.com/NicholasMads14
+    </div>
+  </header>
+
+  <h2>Professional Summary</h2>
+  <p class="sum">
+    IT Technician with hands-on managed service provider experience across networking,
+    infrastructure, and endpoint systems. Currently pursuing a B.S. in Cloud Computing at
+    Western Governors University and building toward a Cloud Engineering role through
+    production infrastructure work, self-directed cloud projects, and certifications across
+    CompTIA, AWS, and Microsoft Azure. Communicates effectively with both technical teams
+    and non-technical clients.
+  </p>
+
+  <h2>Technical Skills</h2>
+  <div class="inline-list">
+    <b>Cloud:</b> AWS (S3, CloudFront, Route 53, ACM, Lambda, DynamoDB, API Gateway, Cognito, IAM), Microsoft Azure<br/>
+    <b>Systems:</b> Linux (Ubuntu), Windows Server, Active Directory, Hyper-V, Virtualization, Microsoft 365<br/>
+    <b>Networking:</b> TCP/IP, DNS, DHCP, VPN, Firewall Management, Software Defined Networking, Meraki<br/>
+    <b>Tools &amp; Practices:</b> Git, GitHub Actions, CI/CD, Bash, Docker, Reverse Proxy, Endpoint Security
+  </div>
+
+  <h2>Professional Experience</h2>
+
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">IT Technician</span>, <span class="job-org">Lattis Networks</span> — Atascadero, CA (Hybrid)</span>
+      <span class="job-when">Dec 2025 – Present</span>
+    </div>
+    <ul>
+      <li>Troubleshoot and resolve network outages, misconfigured infrastructure, and endpoint issues across diverse small business client environments</li>
+      <li>Administer Active Directory, Hyper-V, Meraki dashboards, and firewall configurations</li>
+      <li>Manage physical infrastructure, cabling, endpoint security, and user permissions</li>
+      <li>Onboard new client environments including workstation setup and network documentation</li>
+      <li>Coordinate with vendors and senior technicians to escalate and resolve complex infrastructure issues</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Assistant Office Manager</span>, <span class="job-org">Rogers Jewelry Company</span> — San Luis Obispo, CA</span>
+      <span class="job-when">May 2024 – Dec 2025</span>
+    </div>
+    <ul>
+      <li>Managed CRM systems and maintained data accuracy across multiple store locations</li>
+      <li>Performed PC, printer, and network troubleshooting for staff</li>
+      <li>Handled bookkeeping, data entry, and daily administrative operations</li>
+      <li>Served as a primary point of contact for clients in a high-end retail environment</li>
+    </ul>
+  </div>
+
+  <h2>Technical Projects</h2>
+
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Cloud Resume Challenge</span> — AWS Serverless, GitHub Actions CI/CD</span>
+      <span class="job-when">Feb 2026 – Present</span>
+    </div>
+    <ul>
+      <li>Built and deployed a personal portfolio site using S3 static hosting, CloudFront CDN, and Route 53 with a custom domain</li>
+      <li>Provisioned an SSL certificate through ACM with HTTPS enforced at the CloudFront layer</li>
+      <li>Implemented a serverless visitor counter using API Gateway, Lambda, and DynamoDB</li>
+      <li>Automated deployments with a GitHub Actions CI/CD pipeline</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Movie Ranking Web App</span> — AWS Serverless, React</span>
+      <span class="job-when">Mar 2026 – Present</span>
+    </div>
+    <ul>
+      <li>Developed a full-stack serverless application for ranking and comparing 130+ films across 7 tiers with drag-and-drop reordering</li>
+      <li>Implemented Cognito authentication with per-user data in DynamoDB behind JWT-authorized API Gateway routes</li>
+      <li>Maintained two isolated deployments from a single codebase: a private production environment and a public demo</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Personal Linux HomeLab</span> — Ubuntu, Docker, Networking</span>
+      <span class="job-when">Oct – Nov 2025</span>
+    </div>
+    <ul>
+      <li>Repurposed a Lenovo ThinkCentre M900 into an Ubuntu self-hosted server running multiple Docker services with persistent storage</li>
+      <li>Exposed services publicly over HTTPS using DuckDNS and a Caddy reverse proxy with automatic TLS</li>
+      <li>Hardened access with UFW firewall rules, SSH configuration, and Tailscale zero-trust networking</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Western Governors University</span> — B.S. Cloud Computing, Multi-Cloud (AWS &amp; Azure)</span>
+      <span class="job-when">Expected Nov 2026</span>
+    </div>
+  </div>
+  <div class="job">
+    <div class="job-line">
+      <span><span class="job-title">Cuesta College</span> — A.A. Liberal Arts: Social &amp; Behavioral Sciences</span>
+      <span class="job-when">Dec 2024</span>
+    </div>
+  </div>
+
+  <h2>Certifications</h2>
+  <div class="inline-list">
+    CompTIA Project+ (May 2026) &bull; Microsoft Certified: Azure Fundamentals (Apr 2026) &bull;
+    AWS Certified Cloud Practitioner (Mar 2026) &bull; LPI Linux Essentials (Feb 2026) &bull;
+    ITIL 4 Foundation (Feb 2026) &bull; CompTIA Security+ (Feb 2026) &bull;
+    CompTIA Network+ (Nov 2025) &bull; CompTIA A+ (Sep 2025)
+  </div>
+
+</div>
+</body>
+</html>
